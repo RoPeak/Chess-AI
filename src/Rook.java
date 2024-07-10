@@ -5,7 +5,10 @@ public class Rook extends Piece {
 
     @Override
     public boolean isValidMove(PiecePosition newPosition, Piece[][] board) {
-        // Rooks can move any number of free squares vertically or horizontally
+        // Cannot move to the square it is already on
+        if (newPosition.equals(this.position)) {
+            return false;
+        }
         
         // Horizontal move (row stays the same)
         if (position.getRow() == newPosition.getRow()) {

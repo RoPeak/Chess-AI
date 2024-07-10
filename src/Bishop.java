@@ -5,6 +5,11 @@ public class Bishop extends Piece {
 
     @Override
     public boolean isValidMove(PiecePosition newPosition, Piece[][] board) {
+        // Cannot move to the square it is already on
+        if (newPosition.equals(this.position)) {
+            return false;
+        }
+        
         // Calculate difference between new pos and current pos
         int rowDiff = Math.abs(position.getRow() - newPosition.getRow());
         int colDiff = Math.abs(position.getCol() - newPosition.getCol());
