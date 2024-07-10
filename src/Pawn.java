@@ -30,7 +30,7 @@ public class Pawn extends Piece {
         }
 
         // Diagonal capture (there is an enemy piece one square diagonally above left or right)
-        if (Math.abs(colDiff) == 1 && rowDiff == 1 && board[newPosition.getRow()][newPosition.getCol()] != null && board[newPosition.getRow()][newPosition.getCol()] != this.colour) {
+        if (Math.abs(colDiff) == 1 && rowDiff == 1 && board[newPosition.getRow()][newPosition.getCol()] != null && board[newPosition.getRow()][newPosition.getCol()].colour != this.colour) {
             return true;
         }
 
