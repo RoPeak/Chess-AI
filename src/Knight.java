@@ -15,7 +15,7 @@ public class Knight extends Piece {
         int colDiff = Math.abs(this.position.getCol() - newPosition.getCol());
     
         // Check for the 'L' that a knight can move in
-        boolean isLMove = ((rowDiff == 2 && colDiff == 1) || (rowDiff == 1 && colDiff == 2))
+        boolean isLMove = ((rowDiff == 2 && colDiff == 1) || (rowDiff == 1 && colDiff == 2));
         if (!isLMove) {
             return false;
         }
