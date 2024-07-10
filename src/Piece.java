@@ -1,8 +1,8 @@
 public abstract class Piece {
-    protected Position position;
+    protected PiecePosition position;
     protected PieceColour colour;
 
-    public piece(PieceColour colour, Position position) {
+    public Piece(PieceColour colour, PiecePosition position) {
         this.colour = colour;
         this.position = position;
     }
@@ -11,10 +11,14 @@ public abstract class Piece {
         return this.colour;
     }
 
-    public Position getPosition() {
+    public PiecePosition getPosition() {
         return this.position;
     }
 
+    public void setPosition(PiecePosition position) {
+        this.position = position;
+    }
+
     // Each piece type will have a different implementation of this method
-    public abstract boolean isValidMove(Position newPosition, Piece[][] board);
+    public abstract boolean isValidMove(PiecePosition newPosition, Piece[][] board);
 }

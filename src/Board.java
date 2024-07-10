@@ -11,35 +11,51 @@ public class Board {
     public void setupPieces() {
         // Initialise all piece placements
         // Rook placement
-        board[0][0] = new Rook(PieceColour.BLACK, new Position(0, 0));
-        board[0][7] = new Rook(PieceColour.BLACK, new Position(0, 7));
-        board[7][0] = new Rook(PieceColour.WHITE, new Position(7, 0));
-        board[7][7] = new Rook(PieceColour.BLACK, new Position(0, 0));
+        board[0][0] = new Rook(PieceColour.BLACK, new PiecePosition(0, 0));
+        board[0][7] = new Rook(PieceColour.BLACK, new PiecePosition(0, 7));
+        board[7][0] = new Rook(PieceColour.WHITE, new PiecePosition(7, 0));
+        board[7][7] = new Rook(PieceColour.BLACK, new PiecePosition(0, 0));
 
         // Knight placement
-        board[0][1] = new Knight(PieceColour.BLACK, new Position(0, 1));
-        board[0][6] = new Knight(PieceColour.BLACK, new Position(0, 6));
-        board[7][1] = new Knight(PieceColour.WHITE, new Position(7, 1));
-        board[7][6] = new Knight(PieceColour.BLACK, new Position(7, 6));
+        board[0][1] = new Knight(PieceColour.BLACK, new PiecePosition(0, 1));
+        board[0][6] = new Knight(PieceColour.BLACK, new PiecePosition(0, 6));
+        board[7][1] = new Knight(PieceColour.WHITE, new PiecePosition(7, 1));
+        board[7][6] = new Knight(PieceColour.BLACK, new PiecePosition(7, 6));
 
         // Bishop placement
-        board[0][2] = new Bishop(PieceColour.BLACK, new Position(0, 2));
-        board[0][5] = new Bishop(PieceColour.BLACK, new Position(0, 5));
-        board[7][2] = new Bishop(PieceColour.WHITE, new Position(7, 2));
-        board[7][5] = new Bishop(PieceColour.WHITE, new Position(7, 5));
+        board[0][2] = new Bishop(PieceColour.BLACK, new PiecePosition(0, 2));
+        board[0][5] = new Bishop(PieceColour.BLACK, new PiecePosition(0, 5));
+        board[7][2] = new Bishop(PieceColour.WHITE, new PiecePosition(7, 2));
+        board[7][5] = new Bishop(PieceColour.WHITE, new PiecePosition(7, 5));
 
         // Queen placement
-        board[0][3] = new Queen(PieceColour.BLACK, new Position(0, 3));
-        board[7][3] = new Queen(PieceColour.WHITE, new Position(7, 3));
+        board[0][3] = new Queen(PieceColour.BLACK, new PiecePosition(0, 3));
+        board[7][3] = new Queen(PieceColour.WHITE, new PiecePosition(7, 3));
 
         // King placement
-        board[0][4] = new King(PieceColour.BLACK, new Position(0, 4));
-        board[7][4] = new King(PieceColour.WHITE, new Position(7, 4));
+        board[0][4] = new King(PieceColour.BLACK, new PiecePosition(0, 4));
+        board[7][4] = new King(PieceColour.WHITE, new PiecePosition(7, 4));
 
         // Pawn placement
         for (int i = 0; i < 8; i++) {
-            board[1][i] = new Pawn(PieceColour.BLACK, new Position(1, i));
-            board[6][i] = new Pawn(PieceColour.WHITE, new Position(6, i));
+            board[1][i] = new Pawn(PieceColour.BLACK, new PiecePosition(1, i));
+            board[6][i] = new Pawn(PieceColour.WHITE, new PiecePosition(6, i));
         }
+    }
+
+    public void movePiece(PiecePosition start, PiecePosition end) {
+        // Check if there is a piece at the start position
+        // and that the move is valid
+        if (board[start.getRow()][start.getCol()] != null && 
+            board[start.getRow()][start.getCol()].isValidMove(end, board)) {
+                // Perform the move - place piece at end position
+                board[end.getRow()][end.getCol()] = board[start.getRow()][start.getCol()];
+                
+                // Update piece's position
+                board[end.getRow()][end.getCol()].setPosition(end);
+
+                // Clear start position
+                board[start.getRow()][start.getCol()] = null;
+            }
     }
 }
