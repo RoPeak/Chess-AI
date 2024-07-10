@@ -1,5 +1,3 @@
-import javax.swing.text.Position;
-
 public class Board {
     private Piece[][] board;
 
@@ -57,5 +55,19 @@ public class Board {
                 // Clear start position
                 board[start.getRow()][start.getCol()] = null;
             }
+    }
+
+    public Piece[][] getBoard() {
+        return this.board;
+    }
+    public Piece getPiece(int row, int col) {
+        return board[row][col];
+    }
+
+    public void setPiece(int row, int col, Piece piece) {
+        board[row][col] = piece;
+        if (piece != null) {
+            piece.setPosition(new PiecePosition(row, col));
+        }
     }
 }
