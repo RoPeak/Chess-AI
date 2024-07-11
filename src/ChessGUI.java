@@ -100,6 +100,18 @@ public class ChessGUI extends JFrame {
         }
     }
 
+    private void checkGameOver() {
+        // Check if the game is over, displaying options to replay if so
+        if (game.isCheckmate(game.getCurrentPlayerColour())) {
+            int response = JOptionPane.showConfirmDialog(this, "Checkmate! Would you like to play again?", "Game Over", JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
+                resetGame();
+            } else {
+                System.exit(0);
+            }
+        }
+    }
+
     private void highlightLegalMoves(PiecePosition position) {
         // Provide visual indication to the user of which moves
         // can be made with selected piece
