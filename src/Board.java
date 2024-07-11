@@ -60,6 +60,7 @@ public class Board {
     public Piece[][] getBoard() {
         return this.board;
     }
+    
     public Piece getPiece(int row, int col) {
         return board[row][col];
     }

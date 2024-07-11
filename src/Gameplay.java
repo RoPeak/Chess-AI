@@ -6,6 +6,10 @@ public class Gameplay {
         this.board = new Board();
     }
 
+    public Board getBoard() {
+        return this.board;
+    }
+
     public boolean makeMove(PiecePosition start, PiecePosition end) {
         Piece movingPiece = board.getPiece(start.getRow(), start.getCol());
         
