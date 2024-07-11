@@ -49,11 +49,43 @@ public class ChessGUI extends JFrame {
         refreshBoard();
     }
 
-    private void refreshBoard() {}
+    private void refreshBoard() {
+        // Iterate over every square, checking for piece presence
+        // then use the map to update that square with the appropriate symbol
+        Board board = game.getBoard();
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Piece piece = board.getPiece(row, col);
+                if (piece != null) {
+                    String symbol = pieceMap.get(piece.getClass());
+                    Color colour = (piece.getColour() == PieceColour.WHITE) ? PieceColour.WHITE : PieceColour.BLACK;
+                    squares[row][col].setPieceSymbol(symbol, colour);
+                } else {
+                    squares[row][col].clearPieceSymbol();
+                }
+            }
+        }
+    }
 
-    private void handleSquareClick(int row, int col) {}
+    private void handleSquareClick(int row, int col) {
+        // This method bridges user interacions with game logic
+        // by determining whether a move has been made and then updating
+        // the board
+        if (game.handleSquareSelection(row, col)) {
+            refreshBoard();
+            checkGameState();
+        }
+    }
 
-    private void checkGameState() {}
+    private void checkGameState() {
+        // This method shows the user dialog based on game conditions
+        PieceColour currentPlayer = game.getCurrentPlayerColour();
+        boolean inCheck = game.isInCheck(currentPlayer);
+
+        if (inCheck) {
+            JOptionPane.showMessageDialog(this, currentPlayer + "is in check.");
+        }
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(ChessGUI::new);
