@@ -27,7 +27,27 @@ public class ChessGUI extends JFrame {
         setVisible(true);
     }
 
-    private void initialiseBoard() {}
+    private void initialiseBoard() {
+        // Initialise each square of the board with a component with a mouse listener
+        for (int row = 0; row < squares.length; row++) {
+            for (int col = 0; col < squares[row].length; col++) {
+                final int finalRow = row;
+                final int finalCol = col;
+                ChessSquareComponent square = new ChessSquareComponent(row, col);
+                
+                square.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        handleSquareClick(finalRow, finalCol);
+                    }
+                });
+
+                add(square);
+                squares[row][col] = square;
+            }
+        }
+        refreshBoard();
+    }
 
     private void refreshBoard() {}
 
