@@ -1,6 +1,9 @@
+import javax.swing.text.Position;
+
 public class Gameplay {
     private Board board;
     private boolean whiteTurn = true;
+    private PiecePosition selectedPiecePosition;
 
     public Gameplay() {
         this.board = new Board();
@@ -112,5 +115,45 @@ public class Gameplay {
 
         // No legal moves available, game over
         return true;
+    }
+
+    public void resetGame() {
+        // Re-initialise board and reset turn to white
+        this.board = new Board();
+        this.whiteTurn = true;
+    }
+
+    public PieceColour getCurrentPlayerColour() {
+        // Return White or Black depending on who's turn it is
+        return whiteTurn ? PieceColour.WHITE : PieceColour.BLACK;
+    }
+
+    public boolean isPieceSelected() {
+        return selectedPiecePosition != null;
+    }
+
+    public boolean handleSquareSelection(int row, int col) {
+        // If no piece is selected, this click will likely be to
+        // try and select one - only if there is a piece on this square
+        // AND it is the current player's colour
+        if (selectedPiecePosition == null) {
+            Piece selectedPiece = board.getPiece(row, col);
+            if (selectedPiece != null && selectedPiece.getColour() == getCurrentPlayerColour()) {
+                selectedPiecePosition = new PiecePosition(row, col);
+                // Indicate that a piece has been selected but not moved
+                return false;
+            }
+        } 
+        // If a piece has been selected, this click will likely be to move it
+        else {
+            // Attempt to make move, reset the selected piece regardless of result,
+            // then return success/failure
+            boolean moveMade = makeMove(selectedPiecePosition, new PiecePosition(row, col));
+            selectedPiecePosition = null; 
+            return moveMade;
+        }
+
+        // Return false if no accepting condition was met
+        return false;
     }
 }
