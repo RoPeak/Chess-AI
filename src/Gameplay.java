@@ -253,7 +253,7 @@ public class Gameplay {
                 addPawnMoves(position, selectedPiece.getColour(), legalMoves);
                 break;
             case "Rook":
-                addLineMoves(position, new int[][]{{1,0}, {-1,0}}, {0,1}, {0,-1}}, legalMoves);
+                addLineMoves(position, new int[][]{{1,0}, {-1,0}, {0,1}, {0,-1}}, legalMoves);
                 break;
             case "Knight":
                 addSingleMoves(position, new int[][]{{2,1}, {2,-1}, {-2, 1}, {-2, -1}, {1, 2}, {-1, 2}, {1, -2}, {-1, -2}}, legalMoves);

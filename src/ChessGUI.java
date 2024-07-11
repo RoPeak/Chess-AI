@@ -83,7 +83,7 @@ public class ChessGUI extends JFrame {
             checkGameOver();
         } 
         // If no move was made but a piece was selected, highlight it's legal moves
-        else if {
+        else if (game.isPieceSelected()) {
             highlightLegalMoves(new PiecePosition(row, col));
         }
         refreshBoard();
