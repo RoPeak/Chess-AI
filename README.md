@@ -1,2 +1,5 @@
 # Chess-AI
-javac -d output src\*.java
+Compile with "mvn package" 
+(or "mvn clean install")
+
+Run with "java -jar .\target\*jar-file*.jar"
