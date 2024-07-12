@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class Queen extends Piece {
     public Queen(PieceColour colour, PiecePosition position) {
         super(colour, position);

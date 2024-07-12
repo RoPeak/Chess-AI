@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class Rook extends Piece {
     public Rook(PieceColour colour, PiecePosition position) {
         super(colour, position);

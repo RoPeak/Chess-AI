@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public abstract class Piece {
     protected PiecePosition position;
     protected PieceColour colour;

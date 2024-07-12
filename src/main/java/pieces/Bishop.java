@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class Bishop extends Piece {
     public Bishop(PieceColour colour, PiecePosition position) {
         super(colour, position);

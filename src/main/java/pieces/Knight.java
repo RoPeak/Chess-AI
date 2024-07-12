@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class Knight extends Piece {
     public Knight(PieceColour colour, PiecePosition position) {
         super(colour, position);

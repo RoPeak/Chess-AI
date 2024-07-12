@@ -1,9 +1,23 @@
+package main.java.game;
+
+// Standard imports
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+
+// Custom imports
+import main.java.pieces.Bishop;
+import main.java.pieces.King;
+import main.java.pieces.Knight;
+import main.java.pieces.Pawn;
+import main.java.pieces.Piece;
+import main.java.pieces.PieceColour;
+import main.java.pieces.PiecePosition;
+import main.java.pieces.Queen;
+import main.java.pieces.Rook;
 
 public class ChessGUI extends JFrame {
     private final ChessSquareComponent[][] squares = new ChessSquareComponent[8][8];
