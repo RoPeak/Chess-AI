@@ -1,4 +1,4 @@
-package main.java.pieces;
+package pieces;
 
 public class PiecePosition {
     private int row;

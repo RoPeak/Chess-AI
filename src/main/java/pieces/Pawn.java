@@ -1,4 +1,4 @@
-package main.java.pieces;
+package pieces;
 
 public class Pawn extends Piece {
     public Pawn(PieceColour colour, PiecePosition position) {
