@@ -10,12 +10,12 @@ public class ChessGUI extends JFrame {
     private final Gameplay game = new Gameplay();
     private final Map<Class<? extends Piece>, String> pieceMap = new HashMap<>() {
         {
-            put(Pawn.class, "\u265F");
-            put(Rook.class, "\u265C");
-            put(Knight.class, "\u265E");
-            put(Bishop.class, "\u265D");
-            put(Queen.class, "\u265B");
-            put(King.class, "\u265A");
+            put(Pawn.class, "P");
+            put(Rook.class, "R");
+            put(Knight.class, "N");
+            put(Bishop.class, "B");
+            put(Queen.class, "Q");
+            put(King.class, "K");
         }
     };
 
@@ -30,7 +30,7 @@ public class ChessGUI extends JFrame {
     }
 
     private void initialiseBoard() {
-        // Initialise each square of the board with a component with a mouse listener
+        // Initialise each square of the board to be a component with a mouse listener
         for (int row = 0; row < squares.length; row++) {
             for (int col = 0; col < squares[row].length; col++) {
                 final int finalRow = row;
@@ -48,6 +48,8 @@ public class ChessGUI extends JFrame {
                 squares[row][col] = square;
             }
         }
+
+        // Draw the board
         refreshBoard();
     }
 
@@ -59,10 +61,14 @@ public class ChessGUI extends JFrame {
             for (int col = 0; col < 8; col++) {
                 Piece piece = board.getPiece(row, col);
                 if (piece != null) {
+                    // Piece found, retrieve appropriate symbol and colour
                     String symbol = pieceMap.get(piece.getClass());
-                    Color colour = (piece.getColour() == PieceColour.WHITE) ? Color.WHITE : Color.BLACK;
+                    Color colour = (piece.getColour() == PieceColour.WHITE) ? Color.WHITE : Color.BLUE;
+                    
+                    // Update squares grid
                     squares[row][col].setPieceSymbol(symbol, colour);
                 } else {
+                    // Empty square
                     squares[row][col].clearPieceSymbol();
                 }
             }
@@ -70,7 +76,7 @@ public class ChessGUI extends JFrame {
     }
 
     private void handleSquareClick(int row, int col) {
-        // This method bridges user interacions with game logic
+        // This method bridges user interactions with game logic
         // by determining whether a move has been made and then updating
         // the board
         boolean moveResult = game.handleSquareSelection(row, col);
@@ -146,9 +152,5 @@ public class ChessGUI extends JFrame {
         // Call reset game and refresh board
         game.resetGame();
         refreshBoard();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(ChessGUI::new);
     }
 }
