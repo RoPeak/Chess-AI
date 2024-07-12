@@ -1,2 +1,2 @@
-# Ignore output folder
-output/
+# Ignore Maven output folder
+/target

@@ -1,3 +1,6 @@
+package main.java.game;
+
+// Standard imports
 import javax.swing.*;
 import java.awt.*;
 

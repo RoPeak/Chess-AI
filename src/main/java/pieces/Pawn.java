@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class Pawn extends Piece {
     public Pawn(PieceColour colour, PiecePosition position) {
         super(colour, position);

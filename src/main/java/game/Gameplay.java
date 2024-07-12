@@ -1,5 +1,14 @@
+package main.java.game;
+
+// Standard imports
 import java.util.List;
 import java.util.ArrayList;
+
+// Custom imports
+import main.java.pieces.King;
+import main.java.pieces.Piece;
+import main.java.pieces.PieceColour;
+import main.java.pieces.PiecePosition;
 
 public class Gameplay {
     private Board board;

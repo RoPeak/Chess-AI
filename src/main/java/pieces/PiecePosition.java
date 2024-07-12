@@ -1,3 +1,5 @@
+package main.java.pieces;
+
 public class PiecePosition {
     private int row;
     private int col;
