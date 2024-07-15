@@ -1,5 +1,14 @@
+package game;
+
+// Standard imports
 import java.util.List;
 import java.util.ArrayList;
+
+// Custom imports
+import pieces.PieceColour;
+import pieces.PiecePosition;
+import pieces.King;
+import pieces.Piece;
 
 public class Gameplay {
     private Board board;
@@ -204,7 +213,7 @@ public class Gameplay {
         int direction = colour == PieceColour.WHITE ? -1 : 1;
 
         // Generate move
-        PiecePosition newPos = new PiecePosition(position.getRow() + direction, position.getCol() + direction);
+        PiecePosition newPos = new PiecePosition(position.getRow() + direction, position.getCol());
         
         // Conditions for a standard single move (valid board position and square ahead is free)
         if (isPositionOnBoard(newPos) && board.getPiece(newPos.getRow(), newPos.getCol()) == null) {
@@ -214,8 +223,8 @@ public class Gameplay {
         // Conditions for a double move (valid board position, pawn has not moved, and 2 squares ahead are free)
         // This is only checked if the pawn has not moved before
         if ((colour == PieceColour.WHITE && position.getRow() == 6) || (colour == PieceColour.BLACK && position.getRow() == 1)) {
-            newPos = new PiecePosition(position.getRow() + 2 * direction, position.getCol() + 2 * direction);
-            PiecePosition middleStep = new PiecePosition(position.getRow() + direction, position.getCol() + direction);
+            newPos = new PiecePosition(position.getRow() + 2 * direction, position.getCol());
+            PiecePosition middleStep = new PiecePosition(position.getRow() + direction, position.getCol());
 
             // Valid board position and no pieces blocking = legal move found
             if (isPositionOnBoard(newPos) && board.getPiece(newPos.getRow(), newPos.getCol()) == null 
@@ -253,7 +262,7 @@ public class Gameplay {
                 addPawnMoves(position, selectedPiece.getColour(), legalMoves);
                 break;
             case "Rook":
-                addLineMoves(position, new int[][]{{1,0}, {-1,0}}, {0,1}, {0,-1}}, legalMoves);
+                addLineMoves(position, new int[][]{{1,0}, {-1,0}, {0,1}, {0,-1}}, legalMoves);
                 break;
             case "Knight":
                 addSingleMoves(position, new int[][]{{2,1}, {2,-1}, {-2, 1}, {-2, -1}, {1, 2}, {-1, 2}, {1, -2}, {-1, -2}}, legalMoves);

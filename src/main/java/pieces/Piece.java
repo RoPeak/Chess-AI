@@ -1,3 +1,5 @@
+package pieces;
+
 public abstract class Piece {
     protected PiecePosition position;
     protected PieceColour colour;

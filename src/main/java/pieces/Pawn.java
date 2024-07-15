@@ -1,3 +1,5 @@
+package pieces;
+
 public class Pawn extends Piece {
     public Pawn(PieceColour colour, PiecePosition position) {
         super(colour, position);
@@ -9,13 +11,13 @@ public class Pawn extends Piece {
         if (newPosition.equals(this.position)) {
             return false;
         }
-        
+
         // Set what 'forward' means for this colour pawn
         int forwardDirection = (colour == PieceColour.WHITE ? -1 : 1);
         
         // Calculate difference between current pos and new pos
-        int rowDiff = (newPosition.getRow() - position.getRow() * forwardDirection);
-        int colDiff = (newPosition.getCol() - position.getCol()) * forwardDirection;
+        int rowDiff = (newPosition.getRow() - position.getRow()) * forwardDirection;
+        int colDiff = (newPosition.getCol() - position.getCol());
 
         // Move forward one square (rowDiff is one and target square is free)
         if (colDiff == 0 && rowDiff == 1 && board[newPosition.getRow()][newPosition.getCol()] == null) {

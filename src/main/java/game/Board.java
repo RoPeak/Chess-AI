@@ -1,3 +1,16 @@
+package game;
+
+// Custom imports
+import pieces.Piece;
+import pieces.PieceColour;
+import pieces.PiecePosition;
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.Pawn;
+import pieces.Queen;
+import pieces.Rook;
+
 public class Board {
     private Piece[][] board;
 
@@ -12,13 +25,13 @@ public class Board {
         board[0][0] = new Rook(PieceColour.BLACK, new PiecePosition(0, 0));
         board[0][7] = new Rook(PieceColour.BLACK, new PiecePosition(0, 7));
         board[7][0] = new Rook(PieceColour.WHITE, new PiecePosition(7, 0));
-        board[7][7] = new Rook(PieceColour.BLACK, new PiecePosition(0, 0));
+        board[7][7] = new Rook(PieceColour.WHITE, new PiecePosition(0, 0));
 
-        // Knight placement
+
         board[0][1] = new Knight(PieceColour.BLACK, new PiecePosition(0, 1));
         board[0][6] = new Knight(PieceColour.BLACK, new PiecePosition(0, 6));
         board[7][1] = new Knight(PieceColour.WHITE, new PiecePosition(7, 1));
-        board[7][6] = new Knight(PieceColour.BLACK, new PiecePosition(7, 6));
+        board[7][6] = new Knight(PieceColour.WHITE, new PiecePosition(7, 6));
 
         // Bishop placement
         board[0][2] = new Bishop(PieceColour.BLACK, new PiecePosition(0, 2));
